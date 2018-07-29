@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome! Login/Register</title>
+</head>
+<body>
+    <h1><u>Welcome to Exia's 4th Book Review!</u></h1>
+    <h3>Register</h3>
+    {% if messages %}
+    <ul class='messages'>
+        {% for message in messages %}
+        <li{% if message.tag %} class='{{ message.tag }}' {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action='/register' method='POST'>
+        {% csrf_token %}
+        <p><label>Name:</label>
+        <input type='text' name='name'></p>
+        <p><label>Email:</label>
+        <input type='text' name='email'></p>
+        <p><label>Password:</label>
+        <input type='text' name='password'></p>
+        <p><label>Confirm Password:</label>
+        <input type='text' name='cpassword'></p>
+        <p><input type='submit' value='Register'></p>
+    </form>
+    <h3>Login</h3>
+    <form action='/login' method='POST'>
+        {% csrf_token %}
+        <p><label>Email:</label>
+        <input type='text' name='email'></p>
+        <p><label>Password:</label>
+        <input type='text' name='password'></p>
+        <p><input type='submit' value='Login'></p>
+    </form>
+</body>
+</html>
